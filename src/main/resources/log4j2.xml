@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn">
+    <Properties>
+        <!--        <Property name="basePath">C:\\logs</Property>-->
+    </Properties>
+    <Appenders>
+        <!--        <RollingFile name="fileLogger" fileName="${basePath}/debug.log" filePattern="${basePath}/debug-%d{yyyy-MM-dd}.log">-->
+        <RollingFile name="fileLogger" fileName="log\debug.log" filePattern="log\debug-%d{yyyy-MM-dd}.log">
+            <PatternLayout>
+                <pattern>[%-5level] %d{HH:mm:ss.SSS} %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="20 MB"/>
+            </Policies>
+        </RollingFile>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5level] %d{HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="error" additivity="false">
+            <appender-ref ref="console"/>
+        </Root>
+        <logger name="org.hibernate.SQL" level="debug" additivity="false">
+            <appender-ref ref="console"/>
+        </logger>
+
+        <logger name="org.hibernate.type.descriptor.sql" level="trace" additivity="false" >
+            <appender-ref ref="console"/>
+        </logger>
+
+<!--        <logger name="org.hibernate.SQL" level="trace" additivity="false">-->
+<!--            <appender-ref ref="console"/>-->
+<!--        </logger>-->
+
+<!--        <logger name="org.hibernate.SQL" level="trace" additivity="false">-->
+<!--            <appender-ref ref="console"/>-->
+<!--        </logger>-->
+
+    </Loggers>
+</Configuration>
