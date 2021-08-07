@@ -14,14 +14,15 @@ public class Author {
 
     @Column (name = "middle_name")
     String middleName;
+
     @Column (name = "last_name", nullable = false)
     String lastName;
+
+    public Author () {}
 
     public Author (String firstName, String middleName, String lastName) {
         this.firstName  = firstName;
         this.middleName = middleName;
         this.lastName   = lastName;
     }
-
-    public Author () {}
 }

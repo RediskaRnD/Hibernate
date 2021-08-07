@@ -1,11 +1,11 @@
 package rediska.entities;
 
-import org.hibernate.annotations.Check;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
-import org.hibernate.annotations.Type;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,10 +35,10 @@ public class Book {
     @Column(name = "publish_date")
     Calendar publishDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     public Set<Genre> genres = new HashSet<>();
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany (cascade = CascadeType.ALL)
     public Set<Author> authors = new HashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)

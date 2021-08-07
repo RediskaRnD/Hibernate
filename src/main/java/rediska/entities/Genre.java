@@ -1,5 +1,7 @@
 package rediska.entities;
+
 import org.hibernate.annotations.Check;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,13 +13,13 @@ class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
 
-    @Column (nullable = false)
+    @Column(nullable = false)
     String name;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     Genre parent;
 
-    public Genre() {}
+    public Genre () {}
 
     public Genre (String name) {
         this(name, null);

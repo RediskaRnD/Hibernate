@@ -32,14 +32,15 @@ public class BookStore {
                 var author      = new Author("Vytautas", null, "Petkevicius");
                 var publisher   = new Publisher("Tabula rasa");
                 var publishDate = new GregorianCalendar(2003, Calendar.JANUARY, 1);
-                var book = new Book("Durniu laivas", "9789986625421", 100500, 100.0f, publishDate, publisher);
-//                book.genres.add(metalRock);
+                var book = new Book("Durniu laivas", "9789986625421", null, 100.0f, publishDate, publisher);
+                book.genres.add(metalRock);
                 book.authors.add(author);
                 session.save(book);
 
                 publisher   = new Publisher("Vaga");
                 publishDate = new GregorianCalendar(1990, Calendar.JANUARY, 1);
                 book = new Book("Kaip gimsta baubas: Apybraižos", "9785415006755", 504, 99.992f, publishDate, publisher);
+                book.genres.add(metalRock);
                 book.authors.add(author);
                 session.save(book);
 
